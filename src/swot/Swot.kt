@@ -4,7 +4,7 @@ fun isAcademic(email: String): Boolean {
     val parts = domainParts(email)
     return !isBlacklisted(parts) && (isUnderTLD(parts) || findSchoolNames(parts).isNotEmpty())
 }
-
+// finding the school's title
 fun findSchoolNames(emailOrDomain: String): List<String> {
     return findSchoolNames(domainParts(emailOrDomain))
 }
@@ -42,7 +42,7 @@ private fun findSchoolNames(parts: List<String>): List<String> {
 private fun domainParts(emailOrDomain: String): List<String> {
     return emailOrDomain.trim().toLowerCase().substringAfter('@').substringAfter("://").substringBefore(':').split('.').reversed()
 }
-
+// https://kotlinlang.org/docs/reference/visibility-modifiers.html
 internal fun checkSet(set: Set<String>, parts: List<String>): Boolean {
     val subj = StringBuilder()
     for (part in parts) {
